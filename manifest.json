@@ -1,0 +1,35 @@
+{
+  "name": "حاسبة نمو الحيوان",
+  "short_name": "حاسبة النمو",
+  "description": "حاسبة لنمو الحيوان وتوقع الإنتاج في المستويات القادمة",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#08070f",
+  "theme_color": "#08070f",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
