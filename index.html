@@ -342,7 +342,7 @@
     <div class="section-tag">بيانات حيوانك</div>
     <div class="field-row">
       <div>
-        <label>اللفل الحالي <span class="hint">(1–300)</span></label>
+        <label>اللفل الحالي <span class="hint">(1–400)</span></label>
         <div class="input-shell">
           <span class="badge">LVL</span>
           <input type="number" id="curLevel" placeholder="مثال: 111" min="1" step="1">
@@ -364,13 +364,13 @@
         <label>اللفل المستهدف</label>
         <div class="input-shell">
           <span class="badge">LVL</span>
-          <input type="number" id="targetLevel" placeholder="مثال: 300" min="1" step="1">
+          <input type="number" id="targetLevel" placeholder="مثال: 400" min="1" step="1">
         </div>
         <div class="quick">
           <button onclick="quickTarget(10)">+10</button>
           <button onclick="quickTarget(50)">+50</button>
           <button onclick="quickTarget(100)">+100</button>
-          <button onclick="setTarget(300)">MAX 300 ⭐</button>
+          <button onclick="setTarget(400)">MAX 400 ⭐</button>
         </div>
       </div>
     </div>
@@ -386,7 +386,7 @@
         <div class="chip">الفرق <b id="chipDiff">—</b></div>
       </div>
       <div class="progress-wrap">
-        <div class="progress-meta"><span id="progFrom">LVL 1</span><span id="progPct">0%</span><span id="progTo">LVL 300</span></div>
+        <div class="progress-meta"><span id="progFrom">LVL 1</span><span id="progPct">0%</span><span id="progTo">LVL 400</span></div>
         <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
       </div>
     </div>
@@ -423,9 +423,19 @@
 })();
 
 /* ═══════════ بيانات المنحنى (كما هي) ═══════════ */
+/* نقطة اللفل 400 (2.3179e12) مُشتقة من متوسط 40 حيوان "Brainrot" حقيقي
+   (Base Income عند لفل 1 مقابل Max Income عند لفل 400)، والنسبة (لفل400/لفل1)
+   شبه ثابتة لكل الحيوانات ≈ 4.6358e11.
+
+   نقطة اللفل 210 (1.0404e11) أُضيفت وعُدّلت بعد أن أرسل المستخدم لقطة حقيقية
+   لحيوان "Il Cannone Dominatore" عند LVL 210: Base Income $495M/s،
+   الإنتاج الفعلي عند 210 هو 10.3 Qi/s، وMax Income (لفل 400) = $229 Qi/s.
+   القيمة القديمة المُستنتجة بالـ interpolation بين [201] و[221] كانت أعلى
+   بحوالي 1.3% من القيمة الحقيقية، فاستبدلناها بنقطة حقيقية مضبوطة لتفادي
+   هذا الخطأ في أي حساب يمر بمنطقة اللفل 201–221. */
 const ANCHORS = [
   [1,5],[21,950],[61,14e6],[111,2.99e9],[131,7.78e9],[181,54.8e9],
-  [201,88.2e9],[221,131e9],[241,194e9],[271,352e9],[300,626e9]
+  [201,88.2e9],[210,1.0404e11],[221,131e9],[241,194e9],[271,352e9],[300,626e9],[400,2.3179e12]
 ];
 
 const SUFFIXES = [
